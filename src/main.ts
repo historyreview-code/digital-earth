@@ -241,13 +241,41 @@ function bootstrap(): void {
   });
 
   // === 搜索框 ===
-  // 索引: 大学(中英名+国家) + 城市(中英名+类型)
+  // 知名学校缩写别名 (搜索更友好)
+  const ALIASES: Record<string, string> = {
+    "Massachusetts Institute of Technology": "MIT",
+    "University of Oxford": "Oxford",
+    "University of Cambridge": "Cambridge",
+    "University of California, Berkeley": "UC Berkeley",
+    "University of California, Los Angeles": "UCLA",
+    "University of California, San Diego": "UCSD",
+    "California Institute of Technology": "Caltech",
+    "ETH Zurich": "ETH",
+    "National University of Singapore": "NUS",
+    "Nanyang Technological University, Singapore": "NTU",
+    "UCL": "UCL",
+    "London School of Economics and Political Science": "LSE",
+    "Imperial College London": "Imperial",
+    "The University of Tokyo": "UTokyo",
+    "Georgia Institute of Technology": "Georgia Tech",
+    "Tsinghua University": "THU",
+    "Peking University": "PKU",
+    "University of Hong Kong": "HKU",
+    "The Chinese University of Hong Kong": "CUHK",
+    "Zhejiang University": "ZJU",
+    "Fudan University": "复旦",
+    "Shanghai Jiao Tong University": "SJTU",
+    "University of Science and Technology of China": "USTC",
+    "Korea Advanced Institute of Science and Technology": "KAIST",
+    "Yonsei University (Seoul campus)": "Yonsei",
+    "Sungkyunkwan University (SKKU)": "SKKU",
+  };
   const searchItems: SearchableItem[] = [
     ...universitiesClustered.map((u) => ({
       id: u.id,
       name: getLanguage() === "zh" ? u.nameZh : u.nameEn,
       meta: `#${u.rank}`,
-      haystack: `${u.nameEn} ${u.nameZh} ${u.countryEn} ${u.countryZh} rank${u.rank}`,
+      haystack: `${u.nameEn} ${u.nameZh} ${u.countryEn} ${u.countryZh} rank${u.rank} ${ALIASES[u.nameEn] ?? ""}`,
     })),
     ...majorCities.map((c) => ({
       id: c.id,
@@ -318,7 +346,7 @@ function bootstrap(): void {
           id: u.id,
           name: getLanguage() === "zh" ? u.nameZh : u.nameEn,
           meta: `#${u.rank}`,
-          haystack: `${u.nameEn} ${u.nameZh} ${u.countryEn} ${u.countryZh} rank${u.rank}`,
+          haystack: `${u.nameEn} ${u.nameZh} ${u.countryEn} ${u.countryZh} rank${u.rank} ${ALIASES[u.nameEn] ?? ""}`,
         })),
         ...majorCities.map((c) => ({
           id: c.id,
