@@ -1,0 +1,10 @@
+# Railway 部署配置
+# 部署方式: 在 Railway 控制台连接 GitHub 仓库 digital-earth, 自动识别 Dockerfile
+[deploy]
+# nginx 监听 80, Railway 自动映射
+healthcheckPath = "/"
+healthcheckTimeout = 30
+
+[deploy.watch]
+# 只在这些文件变化时重新部署
+paths = ["src/", "index.html", "package.json", "Dockerfile", "public/"]
