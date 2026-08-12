@@ -38,6 +38,8 @@ export interface OverlayVisualConfig<T extends MarkerItem> {
 export interface GlobeController {
   flyTo(lat: number, lng: number, altitude?: number): void;
   resetView(): void;
+  /** 高亮某个 marker (按 id), 传入 null 清除高亮. 返回是否找到 */
+  highlightMarker(id: string | null): boolean;
   setMarkers<T extends MarkerItem>(markers: T[], visual: MarkerVisualConfig<T>, lang: Language): void;
   setOverlays<T extends MarkerItem>(overlays: T[], visual: OverlayVisualConfig<T>, lang: Language): void;
   setLanguage(lang: Language): void;
@@ -359,23 +361,47 @@ export function createGlobe(opts: CreateGlobeOptions): GlobeController {
 
   // === Initial fly-to ===
   // 把 OrbitControls target 设为地球中心 (0,0,0), camera 设到 initialPointOfView
+  // flyTo: 直接设置相机位置 + 同步 OrbitControls
+  // (tween 版会被 render loop 的 controls.update() 干扰, 改用瞬时跳转保证可靠)
+  let flyTweenId: number | null = null;
+
   function flyTo(lat: number, lng: number, altitude = 0.4): void {
     const target = globe.getCoords(lat, lng, altitude);
-    // 平滑过渡 (简单 tween)
-    const start = camera.position.clone();
     const end = new THREE.Vector3(target.x, target.y, target.z);
-    const duration = 1000;
-    const startTime = performance.now();
-    function step(): void {
-      const elapsed = performance.now() - startTime;
-      const t = Math.min(elapsed / duration, 1);
-      // ease-in-out cubic
-      const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-      camera.position.lerpVectors(start, end, eased);
-      controls.update();
-      if (t < 1) requestAnimationFrame(step);
+
+    // 取消可能存在的 tween
+    if (flyTweenId !== null) {
+      cancelAnimationFrame(flyTweenId);
+      flyTweenId = null;
     }
-    step();
+
+    // 瞬时设置相机位置, controls.update 从 position 重建 spherical
+    camera.position.copy(end);
+    controls.update();
+    // 程序化跳转不触发 controls.change, 手动刷新背面隐藏
+    globe.setPointOfView(camera);
+    updateMarkerVisibility();
+  }
+
+  // 当前高亮的 marker id
+  let highlightedId: string | null = null;
+
+  /**
+   * 高亮某个 marker (放大 + 光晕 + 常显名称), 传入 null 清除
+   */
+  function highlightMarker(id: string | null): boolean {
+    // 清除上一个
+    if (highlightedId && highlightedId !== id) {
+      const prev = markerObjects.find((o) => o.userData?.id === highlightedId);
+      prev?.element?.classList.remove("is-highlighted");
+    }
+    highlightedId = id;
+    if (!id) return true;
+
+    const obj = markerObjects.find((o) => o.userData?.id === id);
+    if (!obj?.element) return false;
+    obj.element.classList.add("is-highlighted");
+    return true;
   }
   flyTo(initialPointOfView.lat, initialPointOfView.lng, initialPointOfView.altitude);
 
@@ -433,6 +459,7 @@ export function createGlobe(opts: CreateGlobeOptions): GlobeController {
   return {
     flyTo,
     resetView,
+    highlightMarker,
     setMarkers,
     setOverlays,
     setLanguage: setLanguage as unknown as GlobeController["setLanguage"],

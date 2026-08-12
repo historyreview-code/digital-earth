@@ -213,6 +213,10 @@ function bootstrap(): void {
     initialPointOfView: initialPOV,
     onMarkerClick: (id: string) => {
       updateUrlForSelected(id);
+      // 点击 marker 打开详情: 清除高亮 + 隐藏引导提示
+      globe.highlightMarker(null);
+      const hint = document.getElementById("highlight-hint");
+      if (hint) hint.classList.add("hidden");
       if (id.startsWith("uni-")) {
         const rank = Number(id.slice(4));
         const uni = universitiesClustered.find((u) => u.rank === rank);
@@ -286,22 +290,35 @@ function bootstrap(): void {
   ];
   const search = createSearchBox();
   search.setItems(searchItems);
+  // 高亮引导提示: 显示 4 秒后自动消失
+  let hintTimer: number | null = null;
+  function showHighlightHint(): void {
+    const hint = document.getElementById("highlight-hint");
+    if (hint) hint.classList.remove("hidden");
+    if (hintTimer !== null) window.clearTimeout(hintTimer);
+    hintTimer = window.setTimeout(() => {
+      const h = document.getElementById("highlight-hint");
+      if (h) h.classList.add("hidden");
+    }, 4000);
+  }
   search.onSelect((item) => {
+    // 飞向目标 + 高亮 marker + 提示点击 (不直接开抽屉, 引导用户发现)
     if (item.id.startsWith("uni-")) {
       const rank = Number(item.id.slice(4));
       const uni = universitiesClustered.find((u) => u.rank === rank);
       if (uni) {
         lastSelected = uni as unknown as University;
-        void loadUniversityDetail(drawer, lastSelected, (lat, lng) =>
-          globe.flyTo(lat, lng, 0.4),
-        );
+        globe.flyTo(uni.lat, uni.lng, 0.35);
+        globe.highlightMarker(item.id);
+        showHighlightHint();
       }
     } else {
       const city = majorCities.find((c) => c.id === item.id);
       if (city) {
         lastSelected = city as unknown as MajorCity;
-        loadCityDetail(drawer, lastSelected);
         globe.flyTo(city.lat, city.lng, 0.3);
+        globe.highlightMarker(item.id);
+        showHighlightHint();
       }
     }
   });
@@ -320,6 +337,20 @@ function bootstrap(): void {
           globe.flyTo(lat, lng, 0.4),
         );
       }, 600);
+    }
+  }
+
+  // === 深度链接: ?highlight=<rank> 自动高亮某个大学 (分享/演示/测试用) ===
+  const urlParams = new URL(window.location.href).searchParams;
+  const highlightRankParam = urlParams.get("highlight");
+  if (highlightRankParam && /^\d+$/.test(highlightRankParam)) {
+    const uni = universitiesClustered.find((u) => u.rank === Number(highlightRankParam));
+    if (uni) {
+      setTimeout(() => {
+        globe.flyTo(uni.lat, uni.lng, 0.35);
+        globe.highlightMarker(uni.id);
+        showHighlightHint();
+      }, 700);
     }
   }
 

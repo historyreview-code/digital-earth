@@ -107,12 +107,14 @@ export function createSearchBox(): SearchController {
       e.preventDefault();
       highlight(Math.max(activeIdx - 1, 0));
     } else if (e.key === "Enter") {
-      if (activeIdx >= 0 && activeIdx < rows.length) {
-        const item = filter(input.value)[activeIdx];
-        if (item) {
-          selectCb?.(item);
-          hide();
-        }
+      // 直接回车: 若无方向键选中, 默认选第一个结果
+      const list = filter(input.value);
+      console.log("[search] Enter, list:", list.length, "activeIdx:", activeIdx);
+      const idx = activeIdx >= 0 ? activeIdx : 0;
+      if (list[idx]) {
+        selectCb?.(list[idx]);
+        hide();
+        input.blur();
       }
     } else if (e.key === "Escape") {
       hide();

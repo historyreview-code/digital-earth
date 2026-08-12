@@ -20,6 +20,64 @@
   display: none !important;
 }
 
+/* ===== 高亮 marker (搜索后引导用户发现点击) ===== */
+.uni-marker.is-highlighted {
+  transform: translate(-50%, -50%) scale(1.8);
+  z-index: 200;
+  animation: uni-highlight-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes uni-highlight-pop {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(2.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.8);
+  }
+}
+
+.uni-marker.is-highlighted .uni-dot {
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  background: #fbbf24;
+  box-shadow:
+    0 0 0 3px rgba(2, 6, 23, 0.8),
+    0 0 20px 4px #fbbf24,
+    0 0 40px 8px rgba(251, 191, 36, 0.5);
+}
+
+.uni-marker.is-highlighted .uni-pulse {
+  opacity: 1;
+  animation: uni-highlight-pulse 1.2s ease-out infinite;
+  color: #fbbf24;
+}
+
+@keyframes uni-highlight-pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.uni-marker.is-highlighted .uni-label {
+  opacity: 1;
+  transform: translate(0, -50%) scale(1);
+  border-color: rgba(251, 191, 36, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 12px rgba(251, 191, 36, 0.3);
+}
+
+.uni-marker.is-highlighted .uni-label-rank {
+  color: #fbbf24;
+}
+
 .uni-marker:hover {
   transform: translate(-50%, -50%) scale(1.4);
   z-index: 100;
