@@ -16,6 +16,7 @@ import { createGlobe } from "./core/globe";
 import { createDrawer, type DrawerController } from "./core/drawer";
 import { createFilterBar, type FilterController } from "./core/filter";
 import { createSearchBox, type SearchableItem } from "./core/search";
+import { createTimeline } from "./core/timeline";
 import { getLanguage, setLanguage, subscribeLanguage, type Language } from "./core/i18n";
 import { themeRegistry, themeExtras, defaultThemeId } from "./themes";
 import {
@@ -358,6 +359,21 @@ function bootstrap(): void {
   globe.onCameraChange(({ lat, lng, altitude }) => {
     savePOVThrottled(lat, lng, altitude);
   });
+
+  // === 底座时间滑块 (V2 第1步: 独立组件, 未来地震主题联动) ===
+  // 第1步交付: 滑块可见可交互可播放, 时间标签滚动即验证组件工作
+  // 第2步 (地震主题): onChange 里按 item.time 过滤 markers
+  const tl = createTimeline();
+  {
+    const now = Date.now();
+    const weekAgo = now - 7 * 24 * 3600 * 1000;
+    tl.setRange(weekAgo, now);
+    tl.play(); // 自动播放展示时间流逝
+    tl.onChange((t, isPlaying) => {
+      // 调试: 打印当前时间 (未来地震主题在此联动 markers)
+      console.log(`[timeline] t=${new Date(t).toISOString()} playing=${isPlaying}`);
+    });
+  }
 
   // === Filter 绑定 ===
   filter.onChange((key) => {
