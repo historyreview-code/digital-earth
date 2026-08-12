@@ -15,6 +15,7 @@ import "./themes/universities/styles.css";
 import { createGlobe } from "./core/globe";
 import { createDrawer, type DrawerController } from "./core/drawer";
 import { createFilterBar, type FilterController } from "./core/filter";
+import { createSearchBox, type SearchableItem } from "./core/search";
 import { getLanguage, setLanguage, subscribeLanguage, type Language } from "./core/i18n";
 import { themeRegistry, themeExtras, defaultThemeId } from "./themes";
 import {
@@ -25,6 +26,7 @@ import {
   universitiesClustered,
   filterUniversitiesByKey,
 } from "./themes/universities/theme";
+import { majorCities } from "./themes/universities/data";
 import type { Theme } from "./core/types";
 import type { University, MajorCity } from "./themes/universities/types";
 import type { GlobeController, MarkerVisualConfig, OverlayVisualConfig } from "./core/globe";
@@ -238,6 +240,44 @@ function bootstrap(): void {
     },
   });
 
+  // === 搜索框 ===
+  // 索引: 大学(中英名+国家) + 城市(中英名+类型)
+  const searchItems: SearchableItem[] = [
+    ...universitiesClustered.map((u) => ({
+      id: u.id,
+      name: getLanguage() === "zh" ? u.nameZh : u.nameEn,
+      meta: `#${u.rank}`,
+      haystack: `${u.nameEn} ${u.nameZh} ${u.countryEn} ${u.countryZh} rank${u.rank}`,
+    })),
+    ...majorCities.map((c) => ({
+      id: c.id,
+      name: getLanguage() === "zh" ? c.nameZh : c.nameEn,
+      meta: getLanguage() === "zh" ? (c.type === "capital" ? "首都" : c.type === "megacity" ? "大城市" : "科技中心") : c.type,
+      haystack: `${c.nameEn} ${c.nameZh} ${c.type} city`,
+    })),
+  ];
+  const search = createSearchBox();
+  search.setItems(searchItems);
+  search.onSelect((item) => {
+    if (item.id.startsWith("uni-")) {
+      const rank = Number(item.id.slice(4));
+      const uni = universitiesClustered.find((u) => u.rank === rank);
+      if (uni) {
+        lastSelected = uni as unknown as University;
+        void loadUniversityDetail(drawer, lastSelected, (lat, lng) =>
+          globe.flyTo(lat, lng, 0.4),
+        );
+      }
+    } else {
+      const city = majorCities.find((c) => c.id === item.id);
+      if (city) {
+        lastSelected = city as unknown as MajorCity;
+        loadCityDetail(drawer, lastSelected);
+        globe.flyTo(city.lat, city.lng, 0.3);
+      }
+    }
+  });
+
   // === 初始 marker ===
   refreshGlobe(globe, theme, filter.getActive());
 
@@ -271,6 +311,27 @@ function bootstrap(): void {
     renderLegend(theme);
     if (theme.filters) filter.render(theme.filters);
     refreshGlobe(globe, theme, filter.getActive());
+    // 搜索索引随语言刷新
+    search.setItems(
+      [
+        ...universitiesClustered.map((u) => ({
+          id: u.id,
+          name: getLanguage() === "zh" ? u.nameZh : u.nameEn,
+          meta: `#${u.rank}`,
+          haystack: `${u.nameEn} ${u.nameZh} ${u.countryEn} ${u.countryZh} rank${u.rank}`,
+        })),
+        ...majorCities.map((c) => ({
+          id: c.id,
+          name: getLanguage() === "zh" ? c.nameZh : c.nameEn,
+          meta: getLanguage() === "zh" ? (c.type === "capital" ? "首都" : c.type === "megacity" ? "大城市" : "科技中心") : c.type,
+          haystack: `${c.nameEn} ${c.nameZh} ${c.type} city`,
+        })),
+      ],
+    );
+    const input = document.getElementById("search-input") as HTMLInputElement | null;
+    if (input) {
+      input.placeholder = getLanguage() === "zh" ? "搜索大学 / 城市 / 国家…" : "Search university / city / country…";
+    }
     if (drawer.isOpen() && lastSelected) {
       if ("rank" in lastSelected) {
         void loadUniversityDetail(drawer, lastSelected, (lat, lng) => globe.flyTo(lat, lng));

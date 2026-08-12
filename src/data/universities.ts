@@ -10,6 +10,12 @@ import type { University } from '../themes/universities/types';
 export const universities: University[] = [
   {
     id: `uni-1`,
+    scores: {
+      overall: 98.2,
+      teaching: 97.2,
+      research: 100.0,
+      citations: 97.7,
+    },
     rank: 1,
     nameEn: "University of Oxford",
     nameZh: "牛津大学",
@@ -24,6 +30,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-2`,
+    scores: {
+      overall: 97.7,
+      teaching: 99.2,
+      research: 95.3,
+      citations: 99.6,
+    },
     rank: 2,
     nameEn: "Massachusetts Institute of Technology",
     nameZh: "麻省理工学院",
@@ -38,6 +50,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-3`,
+    scores: {
+      overall: 97.2,
+      teaching: 98.2,
+      research: 97.3,
+      citations: 99.0,
+    },
     rank: 3,
     nameEn: "Princeton University",
     nameZh: "普林斯顿大学",
@@ -52,6 +70,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-4`,
+    scores: {
+      overall: 97.2,
+      teaching: 96.2,
+      research: 99.9,
+      citations: 97.1,
+    },
     rank: 4,
     nameEn: "University of Cambridge",
     nameZh: "剑桥大学",
@@ -66,6 +90,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-5`,
+    scores: {
+      overall: 97.1,
+      teaching: 95.9,
+      research: 100.0,
+      citations: 98.9,
+    },
     rank: 5,
     nameEn: "Harvard University",
     nameZh: "哈佛大学",
@@ -80,6 +110,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-6`,
+    scores: {
+      overall: 97.1,
+      teaching: 97.5,
+      research: 97.4,
+      citations: 99.5,
+    },
     rank: 6,
     nameEn: "Stanford University",
     nameZh: "史丹佛大學",
@@ -94,6 +130,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-7`,
+    scores: {
+      overall: 96.3,
+      teaching: 96.4,
+      research: 97.4,
+      citations: 96.8,
+    },
     rank: 7,
     nameEn: "California Institute of Technology",
     nameZh: "加州理工學院",
@@ -108,6 +150,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-8`,
+    scores: {
+      overall: 94.7,
+      teaching: 90.6,
+      research: 94.9,
+      citations: 98.0,
+    },
     rank: 8,
     nameEn: "Imperial College London",
     nameZh: "伦敦帝国学院",
@@ -122,6 +170,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-9`,
+    scores: {
+      overall: 94.4,
+      teaching: 87.3,
+      research: 99.0,
+      citations: 98.9,
+    },
     rank: 9,
     nameEn: "University of California, Berkeley",
     nameZh: "加州大學柏克萊分校",
@@ -136,6 +190,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-10`,
+    scores: {
+      overall: 94.1,
+      teaching: 94.6,
+      research: 94.5,
+      citations: 97.2,
+    },
     rank: 10,
     nameEn: "Yale University",
     nameZh: "耶鲁大学",
@@ -150,6 +210,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-11`,
+    scores: {
+      overall: 93.1,
+      teaching: 88.5,
+      research: 97.2,
+      citations: 94.5,
+    },
     rank: 11,
     nameEn: "ETH Zurich",
     nameZh: "苏黎世联邦理工学院",
@@ -164,6 +230,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-12`,
+    scores: {
+      overall: 93.0,
+      teaching: 95.9,
+      research: 98.5,
+      citations: 93.9,
+    },
     rank: 12,
     nameEn: "Tsinghua University",
     nameZh: "清华大学",
@@ -178,6 +250,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-13`,
+    scores: {
+      overall: 92.3,
+      teaching: 95.4,
+      research: 97.9,
+      citations: 89.0,
+    },
     rank: 13,
     nameEn: "Peking University",
     nameZh: "北京大学",
@@ -192,6 +270,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-14`,
+    scores: {
+      overall: 90.8,
+      teaching: 88.1,
+      research: 90.3,
+      citations: 96.1,
+    },
     rank: 14,
     nameEn: "University of Pennsylvania",
     nameZh: "宾夕法尼亚大学",
@@ -206,6 +290,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-15`,
+    scores: {
+      overall: 90.6,
+      teaching: 89.6,
+      research: 90.1,
+      citations: 96.8,
+    },
     rank: 15,
     nameEn: "The University of Chicago",
     nameZh: "芝加哥大学",
@@ -220,6 +310,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-16`,
+    scores: {
+      overall: 90.1,
+      teaching: 84.6,
+      research: 89.9,
+      citations: 96.3,
+    },
     rank: 16,
     nameEn: "Johns Hopkins University",
     nameZh: "约翰斯·霍普金斯大学",
@@ -234,6 +330,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-17`,
+    scores: {
+      overall: 89.7,
+      teaching: 78.6,
+      research: 93.1,
+      citations: 95.1,
+    },
     rank: 17,
     nameEn: "National University of Singapore",
     nameZh: "新加坡国立大学",
@@ -248,6 +350,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-18`,
+    scores: {
+      overall: 89.5,
+      teaching: 85.9,
+      research: 90.6,
+      citations: 95.9,
+    },
     rank: 18,
     nameEn: "Cornell University",
     nameZh: "康奈尔大学",
@@ -262,6 +370,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-19`,
+    scores: {
+      overall: 89.5,
+      teaching: 86.0,
+      research: 91.4,
+      citations: 95.6,
+    },
     rank: 19,
     nameEn: "University of California, Los Angeles",
     nameZh: "加州大学洛杉矶分校",
@@ -276,6 +390,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-20`,
+    scores: {
+      overall: 89.4,
+      teaching: 87.8,
+      research: 87.8,
+      citations: 95.9,
+    },
     rank: 20,
     nameEn: "Columbia University",
     nameZh: "哥伦比亚大学",
@@ -290,6 +410,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-21`,
+    scores: {
+      overall: 88.5,
+      teaching: 78.2,
+      research: 92.9,
+      citations: 92.3,
+    },
     rank: 21,
     nameEn: "University of Toronto",
     nameZh: "多倫多大學",
@@ -304,6 +430,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-22`,
+    scores: {
+      overall: 87.5,
+      teaching: 77.8,
+      research: 85.9,
+      citations: 97.6,
+    },
     rank: 22,
     nameEn: "UCL",
     nameZh: "UCL",
@@ -318,6 +450,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-23`,
+    scores: {
+      overall: 86.9,
+      teaching: 85.7,
+      research: 87.3,
+      citations: 93.8,
+    },
     rank: 23,
     nameEn: "University of Michigan-Ann Arbor",
     nameZh: "密西根大学",
@@ -332,6 +470,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-24`,
+    scores: {
+      overall: 85.0,
+      teaching: 72.7,
+      research: 83.0,
+      citations: 99.0,
+    },
     rank: 24,
     nameEn: "Carnegie Mellon University",
     nameZh: "卡内基·梅隆大学",
@@ -346,6 +490,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-25`,
+    scores: {
+      overall: 83.7,
+      teaching: 77.0,
+      research: 80.0,
+      citations: 97.6,
+    },
     rank: 25,
     nameEn: "University of Washington",
     nameZh: "華盛頓大學",
@@ -360,6 +510,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-26`,
+    scores: {
+      overall: 83.5,
+      teaching: 94.7,
+      research: 94.2,
+      citations: 68.2,
+    },
     rank: 26,
     nameEn: "The University of Tokyo",
     nameZh: "东京大学",
@@ -374,6 +530,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-27`,
+    scores: {
+      overall: 83.4,
+      teaching: 71.9,
+      research: 84.8,
+      citations: 91.3,
+    },
     rank: 27,
     nameEn: "Technical University of Munich",
     nameZh: "慕尼黑工业大学",
@@ -388,6 +550,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-28`,
+    scores: {
+      overall: 82.9,
+      teaching: 78.7,
+      research: 74.2,
+      citations: 95.4,
+    },
     rank: 28,
     nameEn: "Duke University",
     nameZh: "杜克大学",
@@ -402,6 +570,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-29`,
+    scores: {
+      overall: 82.5,
+      teaching: 75.7,
+      research: 74.7,
+      citations: 94.8,
+    },
     rank: 29,
     nameEn: "University of Edinburgh",
     nameZh: "爱丁堡大学",
@@ -416,6 +590,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-30`,
+    scores: {
+      overall: 81.9,
+      teaching: 73.2,
+      research: 76.0,
+      citations: 96.9,
+    },
     rank: 30,
     nameEn: "Northwestern University",
     nameZh: "西北大学 (伊利诺伊州)",
@@ -430,6 +610,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-31`,
+    scores: {
+      overall: 81.6,
+      teaching: 65.8,
+      research: 78.1,
+      citations: 95.2,
+    },
     rank: 31,
     nameEn: "Nanyang Technological University, Singapore",
     nameZh: "南洋理工大学",
@@ -444,6 +630,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-32`,
+    scores: {
+      overall: 81.6,
+      teaching: 74.6,
+      research: 78.5,
+      citations: 94.3,
+    },
     rank: 32,
     nameEn: "New York University",
     nameZh: "纽约大学",
@@ -458,6 +650,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-33`,
+    scores: {
+      overall: 80.5,
+      teaching: 68.3,
+      research: 70.8,
+      citations: 95.6,
+    },
     rank: 33,
     nameEn: "University of Hong Kong",
     nameZh: "香港大學",
@@ -472,6 +670,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-34`,
+    scores: {
+      overall: 79.7,
+      teaching: 68.4,
+      research: 75.4,
+      citations: 92.4,
+    },
     rank: 34,
     nameEn: "LMU Munich",
     nameZh: "慕尼黑大学",
@@ -486,6 +690,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-35`,
+    scores: {
+      overall: 79.6,
+      teaching: 73.5,
+      research: 70.8,
+      citations: 87.5,
+    },
     rank: 35,
     nameEn: "École Polytechnique Fédérale de Lausanne",
     nameZh: "洛桑联邦理工学院",
@@ -500,6 +710,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-36`,
+    scores: {
+      overall: 79.3,
+      teaching: 79.5,
+      research: 77.1,
+      citations: 84.8,
+    },
     rank: 36,
     nameEn: "Fudan University",
     nameZh: "复旦大学",
@@ -514,6 +730,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-37`,
+    scores: {
+      overall: 79.0,
+      teaching: 67.7,
+      research: 75.5,
+      citations: 87.8,
+    },
     rank: 37,
     nameEn: "University of Melbourne",
     nameZh: "墨尔本大学",
@@ -528,6 +750,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-38`,
+    scores: {
+      overall: 78.7,
+      teaching: 64.2,
+      research: 72.1,
+      citations: 95.5,
+    },
     rank: 38,
     nameEn: "King’s College London",
     nameZh: "伦敦国王学院",
@@ -542,6 +770,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-39`,
+    scores: {
+      overall: 78.3,
+      teaching: 75.0,
+      research: 78.4,
+      citations: 84.3,
+    },
     rank: 39,
     nameEn: "Zhejiang University",
     nameZh: "浙江大学",
@@ -556,6 +790,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-40`,
+    scores: {
+      overall: 77.6,
+      teaching: 75.4,
+      research: 79.1,
+      citations: 80.2,
+    },
     rank: 40,
     nameEn: "Shanghai Jiao Tong University",
     nameZh: "上海交通大学",
@@ -570,6 +810,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-41`,
+    scores: {
+      overall: 77.1,
+      teaching: 60.8,
+      research: 75.8,
+      citations: 90.4,
+    },
     rank: 41,
     nameEn: "Georgia Institute of Technology",
     nameZh: "佐治亚理工学院",
@@ -584,6 +830,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-42`,
+    scores: {
+      overall: 77.1,
+      teaching: 71.0,
+      research: 70.8,
+      citations: 86.2,
+    },
     rank: 42,
     nameEn: "McGill University",
     nameZh: "麦吉尔大学",
@@ -598,6 +850,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-43`,
+    scores: {
+      overall: 77.1,
+      teaching: 63.2,
+      research: 63.8,
+      citations: 97.9,
+    },
     rank: 43,
     nameEn: "The Chinese University of Hong Kong",
     nameZh: "香港中文大學",
@@ -612,6 +870,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-44`,
+    scores: {
+      overall: 77.1,
+      teaching: 67.9,
+      research: 80.7,
+      citations: 85.3,
+    },
     rank: 44,
     nameEn: "University of Illinois at Urbana-Champaign",
     nameZh: "伊利诺伊大学厄巴纳-香槟分校",
@@ -626,6 +890,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-45`,
+    scores: {
+      overall: 77.0,
+      teaching: 64.1,
+      research: 73.9,
+      citations: 88.6,
+    },
     rank: 45,
     nameEn: "University of British Columbia",
     nameZh: "不列顛哥倫比亞大學",
@@ -640,6 +910,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-46`,
+    scores: {
+      overall: 76.8,
+      teaching: 61.3,
+      research: 73.8,
+      citations: 91.3,
+    },
     rank: 46,
     nameEn: "KU Leuven",
     nameZh: "鲁汶天主教大学 (荷兰语)",
@@ -654,6 +930,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-47`,
+    scores: {
+      overall: 76.6,
+      teaching: 66.4,
+      research: 63.7,
+      citations: 97.1,
+    },
     rank: 47,
     nameEn: "University of California, San Diego",
     nameZh: "加州大學聖地牙哥分校",
@@ -668,6 +950,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-48`,
+    scores: {
+      overall: 76.5,
+      teaching: 74.2,
+      research: 71.8,
+      citations: 79.8,
+    },
     rank: 48,
     nameEn: "Paris Sciences et Lettres – PSL Research University Paris",
     nameZh: "巴黎",
@@ -682,6 +970,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-49`,
+    scores: {
+      overall: 76.3,
+      teaching: 68.3,
+      research: 61.4,
+      citations: 95.3,
+    },
     rank: 49,
     nameEn: "Universität Heidelberg",
     nameZh: "海德堡大学",
@@ -696,6 +990,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-50`,
+    scores: {
+      overall: 75.8,
+      teaching: 67.8,
+      research: 76.0,
+      citations: 90.1,
+    },
     rank: 50,
     nameEn: "University of Texas at Austin",
     nameZh: "德克薩斯大學奧斯汀分校",
@@ -710,6 +1010,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-51`,
+    scores: {
+      overall: 75.7,
+      teaching: 72.9,
+      research: 69.8,
+      citations: 89.0,
+    },
     rank: 51,
     nameEn: "University of Science and Technology of China",
     nameZh: "中国科学技术大学",
@@ -724,6 +1030,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-52`,
+    scores: {
+      overall: 75.4,
+      teaching: 60.5,
+      research: 71.2,
+      citations: 93.4,
+    },
     rank: 52,
     nameEn: "London School of Economics and Political Science",
     nameZh: "倫敦政治經濟學院",
@@ -738,6 +1050,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-53`,
+    scores: {
+      overall: 75.0,
+      teaching: 59.6,
+      research: 66.0,
+      citations: 95.5,
+    },
     rank: 53,
     nameEn: "Karolinska Institute",
     nameZh: "卡罗林斯卡学院",
@@ -752,6 +1070,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-54`,
+    scores: {
+      overall: 75.0,
+      teaching: 59.2,
+      research: 67.5,
+      citations: 91.5,
+    },
     rank: 54,
     nameEn: "The University of Sydney",
     nameZh: "悉尼大學",
@@ -766,6 +1090,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-55`,
+    scores: {
+      overall: 75.0,
+      teaching: 70.3,
+      research: 68.8,
+      citations: 88.0,
+    },
     rank: 55,
     nameEn: "University of Wisconsin-Madison",
     nameZh: "威斯康星大学麦迪逊分校",
@@ -780,6 +1110,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-56`,
+    scores: {
+      overall: 74.9,
+      teaching: 61.2,
+      research: 65.9,
+      citations: 92.4,
+    },
     rank: 56,
     nameEn: "University of Manchester",
     nameZh: "曼彻斯特大学",
@@ -794,6 +1130,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-57`,
+    scores: {
+      overall: 74.3,
+      teaching: 64.1,
+      research: 75.1,
+      citations: 75.5,
+    },
     rank: 57,
     nameEn: "Delft University of Technology",
     nameZh: "代尔夫特理工大学",
@@ -808,6 +1150,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-58`,
+    scores: {
+      overall: 74.1,
+      teaching: 54.3,
+      research: 65.5,
+      citations: 94.0,
+    },
     rank: 58,
     nameEn: "Monash University",
     nameZh: "蒙納士大學",
@@ -822,6 +1170,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-59`,
+    scores: {
+      overall: 74.1,
+      teaching: 74.1,
+      research: 74.8,
+      citations: 77.6,
+    },
     rank: 59,
     nameEn: "Seoul National University",
     nameZh: "首爾大學",
@@ -836,6 +1190,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-60`,
+    scores: {
+      overall: 74.1,
+      teaching: 56.2,
+      research: 60.6,
+      citations: 95.6,
+    },
     rank: 60,
     nameEn: "The Hong Kong University of Science and Technology",
     nameZh: "香港科技大學",
@@ -850,6 +1210,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-61`,
+    scores: {
+      overall: 74.0,
+      teaching: 86.4,
+      research: 82.7,
+      citations: 56.9,
+    },
     rank: 61,
     nameEn: "Kyoto University",
     nameZh: "京都大学",
@@ -864,6 +1230,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-62`,
+    scores: {
+      overall: 73.7,
+      teaching: 69.6,
+      research: 66.2,
+      citations: 85.1,
+    },
     rank: 62,
     nameEn: "Nanjing University",
     nameZh: "南京大学",
@@ -878,6 +1250,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-63`,
+    scores: {
+      overall: 73.7,
+      teaching: 55.4,
+      research: 63.6,
+      citations: 96.6,
+    },
     rank: 63,
     nameEn: "University of Amsterdam",
     nameZh: "阿姆斯特丹大学",
@@ -892,6 +1270,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-64`,
+    scores: {
+      overall: 72.8,
+      teaching: 63.9,
+      research: 66.4,
+      citations: 84.9,
+    },
     rank: 64,
     nameEn: "University of California, Davis",
     nameZh: "加州大學戴維斯分校",
@@ -906,6 +1290,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-65`,
+    scores: {
+      overall: 72.6,
+      teaching: 70.0,
+      research: 61.0,
+      citations: 87.4,
+    },
     rank: 65,
     nameEn: "Brown University",
     nameZh: "布朗大学",
@@ -920,6 +1310,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-66`,
+    scores: {
+      overall: 72.2,
+      teaching: 58.6,
+      research: 58.4,
+      citations: 90.4,
+    },
     rank: 66,
     nameEn: "Wageningen University & Research",
     nameZh: "瓦赫宁恩大学",
@@ -934,6 +1330,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-67`,
+    scores: {
+      overall: 72.0,
+      teaching: 60.8,
+      research: 56.2,
+      citations: 97.5,
+    },
     rank: 67,
     nameEn: "Washington University in St Louis",
     nameZh: "圣路易斯华盛顿大学",
@@ -948,6 +1350,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-68`,
+    scores: {
+      overall: 71.6,
+      teaching: 71.8,
+      research: 62.4,
+      citations: 70.9,
+    },
     rank: 68,
     nameEn: "Institut Polytechnique de Paris",
     nameZh: "巴黎理工学院",
@@ -962,6 +1370,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-69`,
+    scores: {
+      overall: 71.6,
+      teaching: 67.9,
+      research: 62.2,
+      citations: 80.6,
+    },
     rank: 69,
     nameEn: "Université Paris-Saclay",
     nameZh: "巴黎-薩克雷大學",
@@ -976,6 +1390,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-70`,
+    scores: {
+      overall: 71.3,
+      teaching: 66.7,
+      research: 67.5,
+      citations: 82.4,
+    },
     rank: 70,
     nameEn: "Korea Advanced Institute of Science and Technology (KAIST)",
     nameZh: "朝鮮 (地區)",
@@ -990,6 +1410,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-71`,
+    scores: {
+      overall: 71.3,
+      teaching: 49.3,
+      research: 63.3,
+      citations: 93.6,
+    },
     rank: 71,
     nameEn: "Leiden University",
     nameZh: "萊頓大學",
@@ -1004,6 +1430,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-72`,
+    scores: {
+      overall: 71.2,
+      teaching: 50.3,
+      research: 63.2,
+      citations: 94.5,
+    },
     rank: 72,
     nameEn: "University of California, Santa Barbara",
     nameZh: "加州大學聖塔芭芭拉分校",
@@ -1018,6 +1450,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-73`,
+    scores: {
+      overall: 71.1,
+      teaching: 56.7,
+      research: 62.6,
+      citations: 85.7,
+    },
     rank: 73,
     nameEn: "Australian National University",
     nameZh: "澳洲國立大學",
@@ -1032,6 +1470,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-74`,
+    scores: {
+      overall: 71.1,
+      teaching: 56.5,
+      research: 52.7,
+      citations: 92.7,
+    },
     rank: 74,
     nameEn: "City University of Hong Kong",
     nameZh: "香港城市大學",
@@ -1046,6 +1490,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-75`,
+    scores: {
+      overall: 71.1,
+      teaching: 59.8,
+      research: 59.6,
+      citations: 92.7,
+    },
     rank: 75,
     nameEn: "University of Southern California",
     nameZh: "南加州大学",
@@ -1060,6 +1510,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-76`,
+    scores: {
+      overall: 70.4,
+      teaching: 61.2,
+      research: 56.5,
+      citations: 91.8,
+    },
     rank: 76,
     nameEn: "Boston University",
     nameZh: "波士頓大學",
@@ -1074,6 +1530,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-77`,
+    scores: {
+      overall: 70.4,
+      teaching: 67.6,
+      research: 59.2,
+      citations: 81.6,
+    },
     rank: 77,
     nameEn: "Sorbonne University",
     nameZh: "索邦大学",
@@ -1088,6 +1550,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-78`,
+    scores: {
+      overall: 70.3,
+      teaching: 63.8,
+      research: 59.6,
+      citations: 91.3,
+    },
     rank: 78,
     nameEn: "University of North Carolina at Chapel Hill",
     nameZh: "北卡罗来纳大学教堂山分校",
@@ -1102,6 +1570,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-79`,
+    scores: {
+      overall: 70.0,
+      teaching: 50.2,
+      research: 57.7,
+      citations: 91.9,
+    },
     rank: 79,
     nameEn: "UNSW Sydney",
     nameZh: "新南威尔士大学",
@@ -1116,6 +1590,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-80`,
+    scores: {
+      overall: 69.7,
+      teaching: 51.9,
+      research: 55.4,
+      citations: 91.8,
+    },
     rank: 80,
     nameEn: "The Hong Kong Polytechnic University",
     nameZh: "香港理工大學",
@@ -1130,6 +1610,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-81`,
+    scores: {
+      overall: 69.7,
+      teaching: 50.9,
+      research: 60.9,
+      citations: 87.6,
+    },
     rank: 81,
     nameEn: "The University of Queensland",
     nameZh: "昆士兰大学",
@@ -1144,6 +1630,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-82`,
+    scores: {
+      overall: 69.7,
+      teaching: 51.4,
+      research: 56.5,
+      citations: 94.4,
+    },
     rank: 82,
     nameEn: "University of Bristol",
     nameZh: "布里斯托尔大学",
@@ -1158,6 +1650,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-83`,
+    scores: {
+      overall: 69.3,
+      teaching: 47.4,
+      research: 55.9,
+      citations: 94.1,
+    },
     rank: 83,
     nameEn: "University of Groningen",
     nameZh: "格罗宁根大学",
@@ -1172,6 +1670,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-84`,
+    scores: {
+      overall: 68.9,
+      teaching: 50.6,
+      research: 52.2,
+      citations: 95.9,
+    },
     rank: 84,
     nameEn: "University of Glasgow",
     nameZh: "格拉斯哥大學",
@@ -1186,6 +1690,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-85`,
+    scores: {
+      overall: 68.8,
+      teaching: 62.1,
+      research: 66.3,
+      citations: 73.8,
+    },
     rank: 85,
     nameEn: "Purdue University West Lafayette",
     nameZh: "普渡大學",
@@ -1200,6 +1710,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-86`,
+    scores: {
+      overall: 68.5,
+      teaching: 58.7,
+      research: 57.4,
+      citations: 87.8,
+    },
     rank: 86,
     nameEn: "Yonsei University (Seoul campus)",
     nameZh: "大學",
@@ -1214,6 +1730,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-87`,
+    scores: {
+      overall: 68.3,
+      teaching: 60.2,
+      research: 57.5,
+      citations: 83.4,
+    },
     rank: 87,
     nameEn: "Sungkyunkwan University (SKKU)",
     nameZh: "成均館",
@@ -1228,6 +1750,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-88`,
+    scores: {
+      overall: 67.5,
+      teaching: 60.3,
+      research: 59.0,
+      citations: 84.1,
+    },
     rank: 88,
     nameEn: "University of Minnesota",
     nameZh: "明尼苏达大学",
@@ -1242,6 +1770,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-89`,
+    scores: {
+      overall: 67.2,
+      teaching: 52.6,
+      research: 60.6,
+      citations: 85.5,
+    },
     rank: 89,
     nameEn: "Humboldt University of Berlin",
     nameZh: "柏林洪堡大學",
@@ -1256,6 +1790,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-90`,
+    scores: {
+      overall: 67.1,
+      teaching: 51.3,
+      research: 52.2,
+      citations: 91.3,
+    },
     rank: 90,
     nameEn: "University of Copenhagen",
     nameZh: "哥本哈根大学",
@@ -1270,6 +1810,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-91`,
+    scores: {
+      overall: 66.9,
+      teaching: 47.2,
+      research: 48.7,
+      citations: 98.2,
+    },
     rank: 91,
     nameEn: "Charité - Universitätsmedizin Berlin",
     nameZh: "夏里特",
@@ -1284,6 +1830,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-92`,
+    scores: {
+      overall: 66.7,
+      teaching: 54.9,
+      research: 63.0,
+      citations: 76.7,
+    },
     rank: 92,
     nameEn: "RWTH Aachen University",
     nameZh: "亚琛工业大学",
@@ -1298,6 +1850,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-93`,
+    scores: {
+      overall: 66.7,
+      teaching: 51.5,
+      research: 56.6,
+      citations: 88.5,
+    },
     rank: 93,
     nameEn: "University of Bonn",
     nameZh: "波恩大学",
@@ -1312,6 +1870,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-94`,
+    scores: {
+      overall: 66.7,
+      teaching: 53.8,
+      research: 48.1,
+      citations: 95.6,
+    },
     rank: 94,
     nameEn: "Vanderbilt University",
     nameZh: "范德堡大学",
@@ -1326,6 +1890,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-95`,
+    scores: {
+      overall: 66.6,
+      teaching: 49.1,
+      research: 56.7,
+      citations: 85.7,
+    },
     rank: 95,
     nameEn: "Lund University",
     nameZh: "隆德大学",
@@ -1340,6 +1910,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-96`,
+    scores: {
+      overall: 66.6,
+      teaching: 50.0,
+      research: 60.9,
+      citations: 79.8,
+    },
     rank: 96,
     nameEn: "University of Vienna",
     nameZh: "维也纳大学",
@@ -1354,6 +1930,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-97`,
+    scores: {
+      overall: 66.4,
+      teaching: 47.8,
+      research: 52.8,
+      citations: 91.2,
+    },
     rank: 97,
     nameEn: "University of California, Irvine",
     nameZh: "加州大學爾灣分校",
@@ -1368,6 +1950,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-98`,
+    scores: {
+      overall: 66.3,
+      teaching: 51.1,
+      research: 57.3,
+      citations: 79.7,
+    },
     rank: 98,
     nameEn: "KTH Royal Institute of Technology",
     nameZh: "皇家理工学院",
@@ -1382,6 +1970,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-99`,
+    scores: {
+      overall: 66.3,
+      teaching: 47.7,
+      research: 48.4,
+      citations: 93.7,
+    },
     rank: 99,
     nameEn: "University of Birmingham",
     nameZh: "伯明翰大学",
@@ -1396,6 +1990,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-100`,
+    scores: {
+      overall: 66.3,
+      teaching: 49.1,
+      research: 53.8,
+      citations: 89.0,
+    },
     rank: 100,
     nameEn: "University of Tübingen",
     nameZh: "蒂宾根大学",
@@ -1410,6 +2010,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-101`,
+    scores: {
+      overall: 66.2,
+      teaching: 48.6,
+      research: 58.8,
+      citations: 83.9,
+    },
     rank: 101,
     nameEn: "Aarhus University",
     nameZh: "奥胡斯大学",
@@ -1424,6 +2030,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-102`,
+    scores: {
+      overall: 65.9,
+      teaching: 53.8,
+      research: 46.2,
+      citations: 94.6,
+    },
     rank: 102,
     nameEn: "Emory University",
     nameZh: "埃默里大學",
@@ -1438,6 +2050,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-103`,
+    scores: {
+      overall: 65.8,
+      teaching: 56.7,
+      research: 46.8,
+      citations: 88.1,
+    },
     rank: 103,
     nameEn: "Rice University",
     nameZh: "萊斯大學",
@@ -1452,6 +2070,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-104`,
+    scores: {
+      overall: 65.8,
+      teaching: 70.9,
+      research: 70.8,
+      citations: 52.8,
+    },
     rank: 104,
     nameEn: "Tohoku University",
     nameZh: "东北大学 (日本)",
@@ -1466,6 +2090,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-105`,
+    scores: {
+      overall: 65.7,
+      teaching: 57.1,
+      research: 55.9,
+      citations: 82.7,
+    },
     rank: 105,
     nameEn: "Michigan State University",
     nameZh: "密歇根州立大学",
@@ -1480,6 +2110,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-106`,
+    scores: {
+      overall: 65.7,
+      teaching: 50.4,
+      research: 57.3,
+      citations: 90.1,
+    },
     rank: 106,
     nameEn: "University of Helsinki",
     nameZh: "赫尔辛基大学",
@@ -1494,6 +2130,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-107`,
+    scores: {
+      overall: 65.6,
+      teaching: 38.5,
+      research: 52.9,
+      citations: 95.9,
+    },
     rank: 107,
     nameEn: "Erasmus University Rotterdam",
     nameZh: "鹿特丹伊拉斯姆斯大学",
@@ -1508,6 +2150,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-108`,
+    scores: {
+      overall: 65.4,
+      teaching: 57.4,
+      research: 51.7,
+      citations: 85.7,
+    },
     rank: 108,
     nameEn: "Ohio State University (Main campus)",
     nameZh: "俄亥俄州",
@@ -1522,6 +2170,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-109`,
+    scores: {
+      overall: 65.4,
+      teaching: 54.8,
+      research: 61.9,
+      citations: 80.4,
+    },
     rank: 109,
     nameEn: "Penn State (Main campus)",
     nameZh: "Penn State (Main campus)",
@@ -1536,6 +2190,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-110`,
+    scores: {
+      overall: 65.4,
+      teaching: 46.6,
+      research: 47.0,
+      citations: 92.0,
+    },
     rank: 110,
     nameEn: "University of Bern",
     nameZh: "伯尔尼大学",
@@ -1550,6 +2210,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-111`,
+    scores: {
+      overall: 65.4,
+      teaching: 49.7,
+      research: 49.1,
+      citations: 88.3,
+    },
     rank: 111,
     nameEn: "University of Sheffield",
     nameZh: "谢菲尔德大学",
@@ -1564,6 +2230,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-112`,
+    scores: {
+      overall: 65.3,
+      teaching: 55.0,
+      research: 46.6,
+      citations: 87.9,
+    },
     rank: 112,
     nameEn: "University of Massachusetts",
     nameZh: "马萨诸塞大学系统",
@@ -1578,6 +2250,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-113`,
+    scores: {
+      overall: 65.2,
+      teaching: 50.2,
+      research: 58.3,
+      citations: 82.2,
+    },
     rank: 113,
     nameEn: "Free University of Berlin",
     nameZh: "柏林自由大学",
@@ -1592,6 +2270,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-114`,
+    scores: {
+      overall: 65.2,
+      teaching: 47.8,
+      research: 52.5,
+      citations: 90.3,
+    },
     rank: 114,
     nameEn: "University of Oslo",
     nameZh: "奥斯陆大学",
@@ -1606,6 +2290,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-115`,
+    scores: {
+      overall: 65.1,
+      teaching: 48.8,
+      research: 58.6,
+      citations: 82.7,
+    },
     rank: 115,
     nameEn: "Ghent University",
     nameZh: "根特大学",
@@ -1620,6 +2310,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-116`,
+    scores: {
+      overall: 65.0,
+      teaching: 42.2,
+      research: 49.3,
+      citations: 93.1,
+    },
     rank: 116,
     nameEn: "McMaster University",
     nameZh: "麥馬士達大學",
@@ -1634,6 +2330,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-117`,
+    scores: {
+      overall: 65.0,
+      teaching: 50.4,
+      research: 58.3,
+      citations: 89.1,
+    },
     rank: 117,
     nameEn: "University of Maryland, College Park",
     nameZh: "馬里蘭大學學院市分校",
@@ -1648,6 +2350,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-118`,
+    scores: {
+      overall: 64.9,
+      teaching: 48.3,
+      research: 50.3,
+      citations: 87.2,
+    },
     rank: 118,
     nameEn: "University of Leeds",
     nameZh: "利兹大学",
@@ -1662,6 +2370,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-119`,
+    scores: {
+      overall: 64.6,
+      teaching: 49.1,
+      research: 55.4,
+      citations: 78.1,
+    },
     rank: 119,
     nameEn: "University of Alberta",
     nameZh: "阿爾伯塔大學",
@@ -1676,6 +2390,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-120`,
+    scores: {
+      overall: 64.5,
+      teaching: 50.2,
+      research: 42.8,
+      citations: 87.5,
+    },
     rank: 120,
     nameEn: "University of Basel",
     nameZh: "巴塞尔大学",
@@ -1690,6 +2410,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-121`,
+    scores: {
+      overall: 64.4,
+      teaching: 51.2,
+      research: 46.5,
+      citations: 82.6,
+    },
     rank: 121,
     nameEn: "Technical University of Denmark",
     nameZh: "丹麥理工大學",
@@ -1704,6 +2430,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-122`,
+    scores: {
+      overall: 64.1,
+      teaching: 49.4,
+      research: 52.7,
+      citations: 87.2,
+    },
     rank: 122,
     nameEn: "University of Göttingen",
     nameZh: "哥廷根大学",
@@ -1718,6 +2450,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-123`,
+    scores: {
+      overall: 64.1,
+      teaching: 48.1,
+      research: 49.3,
+      citations: 85.6,
+    },
     rank: 123,
     nameEn: "University of Warwick",
     nameZh: "University of Warwick",
@@ -1732,6 +2470,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-124`,
+    scores: {
+      overall: 64.1,
+      teaching: 54.0,
+      research: 48.4,
+      citations: 90.1,
+    },
     rank: 124,
     nameEn: "Wuhan University",
     nameZh: "武汉大学",
@@ -1746,6 +2490,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-125`,
+    scores: {
+      overall: 63.7,
+      teaching: 45.7,
+      research: 52.8,
+      citations: 87.1,
+    },
     rank: 125,
     nameEn: "University of Hamburg",
     nameZh: "汉堡大学",
@@ -1760,6 +2510,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-126`,
+    scores: {
+      overall: 63.7,
+      teaching: 44.3,
+      research: 46.1,
+      citations: 89.0,
+    },
     rank: 126,
     nameEn: "University of Lausanne",
     nameZh: "洛桑大学",
@@ -1774,6 +2530,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-127`,
+    scores: {
+      overall: 63.6,
+      teaching: 51.8,
+      research: 44.5,
+      citations: 86.3,
+    },
     rank: 127,
     nameEn: "University of Rochester",
     nameZh: "羅徹斯特大學",
@@ -1788,6 +2550,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-128`,
+    scores: {
+      overall: 63.5,
+      teaching: 47.4,
+      research: 54.9,
+      citations: 81.3,
+    },
     rank: 128,
     nameEn: "Uppsala University",
     nameZh: "乌普萨拉大学",
@@ -1802,6 +2570,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-129`,
+    scores: {
+      overall: 63.4,
+      teaching: 44.6,
+      research: 45.4,
+      citations: 89.6,
+    },
     rank: 129,
     nameEn: "University of Southampton",
     nameZh: "南安普敦大学",
@@ -1816,6 +2590,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-130`,
+    scores: {
+      overall: 63.3,
+      teaching: 54.2,
+      research: 50.1,
+      citations: 83.3,
+    },
     rank: 130,
     nameEn: "University of Bologna",
     nameZh: "博洛尼亚大学",
@@ -1830,6 +2610,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-131`,
+    scores: {
+      overall: 63.2,
+      teaching: 57.2,
+      research: 57.7,
+      citations: 77.2,
+    },
     rank: 131,
     nameEn: "Harbin Institute of Technology",
     nameZh: "哈尔滨工业大学",
@@ -1844,6 +2630,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-132`,
+    scores: {
+      overall: 63.2,
+      teaching: 41.4,
+      research: 46.1,
+      citations: 88.3,
+    },
     rank: 132,
     nameEn: "Maastricht University",
     nameZh: "马斯特里赫特大学",
@@ -1858,6 +2650,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-133`,
+    scores: {
+      overall: 63.0,
+      teaching: 38.3,
+      research: 48.9,
+      citations: 89.5,
+    },
     rank: 133,
     nameEn: "Adelaide University",
     nameZh: "阿德萊德大學 (2026年)",
@@ -1872,6 +2670,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-134`,
+    scores: {
+      overall: 63.0,
+      teaching: 80.9,
+      research: 69.7,
+      citations: 32.9,
+    },
     rank: 134,
     nameEn: "Lomonosov Moscow State University",
     nameZh: "莫斯科国立大学",
@@ -1886,6 +2690,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-135`,
+    scores: {
+      overall: 62.9,
+      teaching: 59.6,
+      research: 49.3,
+      citations: 80.9,
+    },
     rank: 135,
     nameEn: "Beijing Normal University",
     nameZh: "北京师范大学",
@@ -1900,6 +2710,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-136`,
+    scores: {
+      overall: 62.9,
+      teaching: 38.7,
+      research: 42.6,
+      citations: 95.7,
+    },
     rank: 136,
     nameEn: "Queen Mary University of London",
     nameZh: "伦敦玛丽女王大学",
@@ -1914,6 +2730,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-137`,
+    scores: {
+      overall: 62.9,
+      teaching: 55.3,
+      research: 56.7,
+      citations: 76.2,
+    },
     rank: 137,
     nameEn: "University of Florida",
     nameZh: "佛罗里达大学",
@@ -1928,6 +2750,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-138`,
+    scores: {
+      overall: 62.8,
+      teaching: 58.6,
+      research: 46.9,
+      citations: 86.4,
+    },
     rank: 138,
     nameEn: "Scuola Normale Superiore di Pisa",
     nameZh: "比萨高等师范学校",
@@ -1942,6 +2770,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-139`,
+    scores: {
+      overall: 62.6,
+      teaching: 48.3,
+      research: 52.5,
+      citations: 86.1,
+    },
     rank: 139,
     nameEn: "University of Arizona",
     nameZh: "亚利桑那大学",
@@ -1956,6 +2790,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-140`,
+    scores: {
+      overall: 62.6,
+      teaching: 46.7,
+      research: 47.4,
+      citations: 84.5,
+    },
     rank: 140,
     nameEn: "University of Freiburg",
     nameZh: "弗赖堡大学",
@@ -1970,6 +2810,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-141`,
+    scores: {
+      overall: 62.5,
+      teaching: 59.4,
+      research: 54.9,
+      citations: 68.6,
+    },
     rank: 141,
     nameEn: "National Taiwan University (NTU)",
     nameZh: "國立臺灣大學",
@@ -1984,6 +2830,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-142`,
+    scores: {
+      overall: 62.3,
+      teaching: 58.3,
+      research: 49.5,
+      citations: 79.2,
+    },
     rank: 142,
     nameEn: "Pohang University of Science and Technology (POSTECH)",
     nameZh: "浦项市",
@@ -1998,6 +2850,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-143`,
+    scores: {
+      overall: 62.3,
+      teaching: 53.2,
+      research: 53.6,
+      citations: 74.3,
+    },
     rank: 143,
     nameEn: "Tongji University",
     nameZh: "同济大学",
@@ -2012,6 +2870,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-144`,
+    scores: {
+      overall: 62.2,
+      teaching: 43.5,
+      research: 42.0,
+      citations: 91.2,
+    },
     rank: 144,
     nameEn: "University of Liverpool",
     nameZh: "利物浦大学",
@@ -2026,6 +2890,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-145`,
+    scores: {
+      overall: 62.1,
+      teaching: 39.8,
+      research: 43.2,
+      citations: 93.0,
+    },
     rank: 145,
     nameEn: "Newcastle University",
     nameZh: "纽卡斯尔大学 (英国)",
@@ -2040,6 +2910,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-146`,
+    scores: {
+      overall: 62.0,
+      teaching: 51.8,
+      research: 42.2,
+      citations: 88.7,
+    },
     rank: 146,
     nameEn: "Case Western Reserve University",
     nameZh: "凱斯西儲大學",
@@ -2054,6 +2930,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-147`,
+    scores: {
+      overall: 62.0,
+      teaching: 44.0,
+      research: 47.8,
+      citations: 88.5,
+    },
     rank: 147,
     nameEn: "University of Barcelona",
     nameZh: "巴塞罗那大学",
@@ -2068,6 +2950,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-148`,
+    scores: {
+      overall: 62.0,
+      teaching: 40.2,
+      research: 40.9,
+      citations: 92.9,
+    },
     rank: 148,
     nameEn: "University of Macau",
     nameZh: "澳門大學",
@@ -2082,6 +2970,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-149`,
+    scores: {
+      overall: 62.0,
+      teaching: 45.8,
+      research: 43.3,
+      citations: 87.3,
+    },
     rank: 149,
     nameEn: "University of Nottingham",
     nameZh: "University of Nottingham",
@@ -2096,6 +2990,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-150`,
+    scores: {
+      overall: 62.0,
+      teaching: 36.8,
+      research: 42.6,
+      citations: 94.1,
+    },
     rank: 150,
     nameEn: "University of Technology Sydney",
     nameZh: "悉尼科技大学",
@@ -2110,6 +3010,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-151`,
+    scores: {
+      overall: 61.9,
+      teaching: 41.4,
+      research: 50.5,
+      citations: 83.1,
+    },
     rank: 151,
     nameEn: "Université de Montréal",
     nameZh: "蒙特利尔大学",
@@ -2124,6 +3030,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-152`,
+    scores: {
+      overall: 61.8,
+      teaching: 52.5,
+      research: 57.2,
+      citations: 73.4,
+    },
     rank: 152,
     nameEn: "Texas A&M University",
     nameZh: "得克萨斯农工大学",
@@ -2138,6 +3050,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-153`,
+    scores: {
+      overall: 61.8,
+      teaching: 65.9,
+      research: 64.9,
+      citations: 53.3,
+    },
     rank: 153,
     nameEn: "The University of Osaka",
     nameZh: "大阪大学",
@@ -2152,6 +3070,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-154`,
+    scores: {
+      overall: 61.7,
+      teaching: 38.7,
+      research: 45.1,
+      citations: 87.6,
+    },
     rank: 154,
     nameEn: "The University of Western Australia",
     nameZh: "西澳大学",
@@ -2166,6 +3090,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-155`,
+    scores: {
+      overall: 61.5,
+      teaching: 38.5,
+      research: 49.7,
+      citations: 89.3,
+    },
     rank: 155,
     nameEn: "Radboud University Nijmegen",
     nameZh: "拉德堡德大学",
@@ -2180,6 +3110,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-156`,
+    scores: {
+      overall: 61.5,
+      teaching: 44.1,
+      research: 43.9,
+      citations: 87.5,
+    },
     rank: 156,
     nameEn: "University of York",
     nameZh: "約克大學 (英國)",
@@ -2194,6 +3130,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-157`,
+    scores: {
+      overall: 61.4,
+      teaching: 52.4,
+      research: 51.3,
+      citations: 73.3,
+    },
     rank: 157,
     nameEn: "Korea University",
     nameZh: "高麗大學",
@@ -2208,6 +3150,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-158`,
+    scores: {
+      overall: 61.4,
+      teaching: 40.4,
+      research: 46.8,
+      citations: 85.7,
+    },
     rank: 158,
     nameEn: "University of Auckland",
     nameZh: "奧克蘭大學",
@@ -2222,6 +3170,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-159`,
+    scores: {
+      overall: 61.4,
+      teaching: 49.2,
+      research: 43.3,
+      citations: 92.0,
+    },
     rank: 159,
     nameEn: "University of Pittsburgh-Pittsburgh campus",
     nameZh: "大學",
@@ -2236,6 +3190,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-160`,
+    scores: {
+      overall: 61.3,
+      teaching: 47.5,
+      research: 51.6,
+      citations: 84.1,
+    },
     rank: 160,
     nameEn: "University of Colorado Boulder",
     nameZh: "科羅拉多大學博爾德分校",
@@ -2250,6 +3210,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-161`,
+    scores: {
+      overall: 61.0,
+      teaching: 39.6,
+      research: 44.2,
+      citations: 93.9,
+    },
     rank: 161,
     nameEn: "Southern University of Science and Technology (SUSTech)",
     nameZh: "大學",
@@ -2264,6 +3230,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-162`,
+    scores: {
+      overall: 61.0,
+      teaching: 45.2,
+      research: 52.8,
+      citations: 77.8,
+    },
     rank: 162,
     nameEn: "Technical University of Berlin",
     nameZh: "柏林工业大学",
@@ -2278,6 +3250,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-163`,
+    scores: {
+      overall: 60.9,
+      teaching: 50.6,
+      research: 43.3,
+      citations: 78.2,
+    },
     rank: 163,
     nameEn: "University of St Andrews",
     nameZh: "圣安德鲁斯大学",
@@ -2292,6 +3270,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-164`,
+    scores: {
+      overall: 60.9,
+      teaching: 42.7,
+      research: 47.6,
+      citations: 83.4,
+    },
     rank: 164,
     nameEn: "University of Waterloo",
     nameZh: "滑鐵盧大學",
@@ -2306,6 +3290,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-165`,
+    scores: {
+      overall: 60.8,
+      teaching: 39.4,
+      research: 46.7,
+      citations: 87.8,
+    },
     rank: 165,
     nameEn: "University of Cape Town",
     nameZh: "开普敦大学",
@@ -2320,6 +3310,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-166`,
+    scores: {
+      overall: 60.8,
+      teaching: 44.5,
+      research: 46.5,
+      citations: 83.9,
+    },
     rank: 166,
     nameEn: "University of Cologne",
     nameZh: "科隆大学",
@@ -2334,6 +3330,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-167`,
+    scores: {
+      overall: 60.7,
+      teaching: 66.9,
+      research: 60.5,
+      citations: 52.7,
+    },
     rank: 167,
     nameEn: "Institute of Science Tokyo",
     nameZh: "東京科學大學",
@@ -2348,6 +3350,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-168`,
+    scores: {
+      overall: 60.7,
+      teaching: 49.3,
+      research: 54.9,
+      citations: 69.3,
+    },
     rank: 168,
     nameEn: "Karlsruhe Institute of Technology",
     nameZh: "卡尔斯鲁厄理工学院",
@@ -2362,6 +3370,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-169`,
+    scores: {
+      overall: 60.7,
+      teaching: 35.9,
+      research: 42.5,
+      citations: 90.9,
+    },
     rank: 169,
     nameEn: "Macquarie University",
     nameZh: "麥覺理大學",
@@ -2376,6 +3390,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-170`,
+    scores: {
+      overall: 60.7,
+      teaching: 43.8,
+      research: 40.0,
+      citations: 85.2,
+    },
     rank: 170,
     nameEn: "University of Geneva",
     nameZh: "日内瓦大学",
@@ -2390,6 +3410,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-171`,
+    scores: {
+      overall: 60.7,
+      teaching: 51.1,
+      research: 41.7,
+      citations: 86.6,
+    },
     rank: 171,
     nameEn: "University of Virginia (Main campus)",
     nameZh: "大學",
@@ -2404,6 +3430,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-172`,
+    scores: {
+      overall: 60.6,
+      teaching: 55.9,
+      research: 53.5,
+      citations: 73.4,
+    },
     rank: 172,
     nameEn: "Sapienza University of Rome",
     nameZh: "罗马大学",
@@ -2418,6 +3450,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-173`,
+    scores: {
+      overall: 60.6,
+      teaching: 38.9,
+      research: 44.3,
+      citations: 89.6,
+    },
     rank: 173,
     nameEn: "University of Antwerp",
     nameZh: "安特衛普大學",
@@ -2432,6 +3470,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-174`,
+    scores: {
+      overall: 60.6,
+      teaching: 36.6,
+      research: 42.1,
+      citations: 94.0,
+    },
     rank: 174,
     nameEn: "University of Exeter",
     nameZh: "艾希特大學",
@@ -2446,6 +3490,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-175`,
+    scores: {
+      overall: 60.5,
+      teaching: 42.8,
+      research: 44.9,
+      citations: 83.2,
+    },
     rank: 175,
     nameEn: "Trinity College Dublin",
     nameZh: "三一學院 (都柏林)",
@@ -2460,6 +3510,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-176`,
+    scores: {
+      overall: 60.4,
+      teaching: 47.1,
+      research: 50.0,
+      citations: 77.0,
+    },
     rank: 176,
     nameEn: "TU Dresden",
     nameZh: "德累斯顿工业大学",
@@ -2474,6 +3530,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-177`,
+    scores: {
+      overall: 60.3,
+      teaching: 45.2,
+      research: 44.9,
+      citations: 81.0,
+    },
     rank: 177,
     nameEn: "Durham University",
     nameZh: "杜伦大学",
@@ -2488,6 +3550,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-178`,
+    scores: {
+      overall: 60.2,
+      teaching: 46.6,
+      research: 48.4,
+      citations: 87.1,
+    },
     rank: 178,
     nameEn: "Huazhong University of Science and Technology",
     nameZh: "华中科技大学",
@@ -2502,6 +3570,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-179`,
+    scores: {
+      overall: 60.2,
+      teaching: 37.7,
+      research: 41.8,
+      citations: 91.8,
+    },
     rank: 179,
     nameEn: "Vrije Universiteit Amsterdam",
     nameZh: "阿姆斯特丹自由大学",
@@ -2516,6 +3590,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-180`,
+    scores: {
+      overall: 60.1,
+      teaching: 39.6,
+      research: 43.5,
+      citations: 91.2,
+    },
     rank: 180,
     nameEn: "University of Würzburg",
     nameZh: "维尔茨堡大学",
@@ -2530,6 +3610,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-181`,
+    scores: {
+      overall: 60.0,
+      teaching: 56.3,
+      research: 38.5,
+      citations: 81.8,
+    },
     rank: 181,
     nameEn: "Dartmouth College",
     nameZh: "达特茅斯学院",
@@ -2544,6 +3630,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-182`,
+    scores: {
+      overall: 59.9,
+      teaching: 36.3,
+      research: 36.8,
+      citations: 94.2,
+    },
     rank: 182,
     nameEn: "Medical University of Vienna",
     nameZh: "维也纳医科大学",
@@ -2558,6 +3650,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-183`,
+    scores: {
+      overall: 59.9,
+      teaching: 38.3,
+      research: 41.7,
+      citations: 93.2,
+    },
     rank: 183,
     nameEn: "University of California, Santa Cruz",
     nameZh: "加州大學聖塔克魯茲分校",
@@ -2572,6 +3670,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-184`,
+    scores: {
+      overall: 59.8,
+      teaching: 44.9,
+      research: 44.8,
+      citations: 84.6,
+    },
     rank: 184,
     nameEn: "Universitat Autònoma de Barcelona (UAB)",
     nameZh: "巴塞罗那",
@@ -2586,6 +3690,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-185`,
+    scores: {
+      overall: 59.7,
+      teaching: 36.3,
+      research: 43.2,
+      citations: 85.7,
+    },
     rank: 185,
     nameEn: "King Fahd University of Petroleum and Minerals",
     nameZh: "King Fahd University of Petroleum and Minerals",
@@ -2600,6 +3710,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-186`,
+    scores: {
+      overall: 59.7,
+      teaching: 40.9,
+      research: 40.8,
+      citations: 86.7,
+    },
     rank: 186,
     nameEn: "Lancaster University",
     nameZh: "蘭卡斯特大學",
@@ -2614,6 +3730,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-187`,
+    scores: {
+      overall: 59.7,
+      teaching: 40.0,
+      research: 47.7,
+      citations: 80.7,
+    },
     rank: 187,
     nameEn: "Université Catholique de Louvain",
     nameZh: "鲁汶天主教大学 (法语)",
@@ -2628,6 +3750,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-188`,
+    scores: {
+      overall: 59.5,
+      teaching: 36.6,
+      research: 45.3,
+      citations: 87.5,
+    },
     rank: 188,
     nameEn: "Pompeu Fabra University",
     nameZh: "庞培法布拉大学",
@@ -2642,6 +3770,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-189`,
+    scores: {
+      overall: 59.5,
+      teaching: 38.2,
+      research: 44.5,
+      citations: 85.4,
+    },
     rank: 189,
     nameEn: "University of Ottawa",
     nameZh: "渥太華大學",
@@ -2656,6 +3790,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-190`,
+    scores: {
+      overall: 59.4,
+      teaching: 51.3,
+      research: 34.7,
+      citations: 88.2,
+    },
     rank: 190,
     nameEn: "Tufts University",
     nameZh: "塔夫茨大學",
@@ -2670,6 +3810,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-191`,
+    scores: {
+      overall: 59.3,
+      teaching: 44.4,
+      research: 38.0,
+      citations: 89.9,
+    },
     rank: 191,
     nameEn: "Université Paris Cité",
     nameZh: "巴黎西岱大學",
@@ -2684,6 +3830,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-192`,
+    scores: {
+      overall: 59.3,
+      teaching: 45.7,
+      research: 45.0,
+      citations: 73.0,
+    },
     rank: 192,
     nameEn: "University of Twente",
     nameZh: "特文特大学",
@@ -2698,6 +3850,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-193`,
+    scores: {
+      overall: 59.2,
+      teaching: 47.7,
+      research: 49.5,
+      citations: 67.0,
+    },
     rank: 193,
     nameEn: "Eindhoven University of Technology",
     nameZh: "埃因霍温理工大学",
@@ -2712,6 +3870,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-194`,
+    scores: {
+      overall: 59.2,
+      teaching: 35.4,
+      research: 34.9,
+      citations: 95.9,
+    },
     rank: 194,
     nameEn: "University of Leicester",
     nameZh: "萊斯特大學",
@@ -2726,6 +3890,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-195`,
+    scores: {
+      overall: 59.1,
+      teaching: 52.8,
+      research: 45.8,
+      citations: 73.5,
+    },
     rank: 195,
     nameEn: "University of Notre Dame",
     nameZh: "聖母大學",
@@ -2740,6 +3910,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-196`,
+    scores: {
+      overall: 59.0,
+      teaching: 44.3,
+      research: 43.4,
+      citations: 78.9,
+    },
     rank: 196,
     nameEn: "Aalto University",
     nameZh: "阿尔托大学",
@@ -2754,6 +3930,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-197`,
+    scores: {
+      overall: 59.0,
+      teaching: 35.8,
+      research: 38.9,
+      citations: 91.6,
+    },
     rank: 197,
     nameEn: "The Education University of Hong Kong",
     nameZh: "香港教育大學",
@@ -2768,6 +3950,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-198`,
+    scores: {
+      overall: 59.0,
+      teaching: 43.9,
+      research: 47.2,
+      citations: 83.2,
+    },
     rank: 198,
     nameEn: "University of Münster",
     nameZh: "明斯特大学",
@@ -2782,6 +3970,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-199`,
+    scores: {
+      overall: 58.8,
+      teaching: 47.1,
+      research: 36.9,
+      citations: 87.3,
+    },
     rank: 199,
     nameEn: "Indiana University",
     nameZh: "印第安纳大学系统",
@@ -2796,6 +3990,12 @@ export const universities: University[] = [
   },
   {
     id: `uni-200`,
+    scores: {
+      overall: 58.8,
+      teaching: 34.7,
+      research: 38.4,
+      citations: 90.8,
+    },
     rank: 200,
     nameEn: "Queen’s University Belfast",
     nameZh: "贝尔法斯特女王大学",

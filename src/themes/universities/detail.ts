@@ -84,6 +84,45 @@ export async function loadUniversityDetail(
     fragment.append(figure);
   }
 
+  // THE 分项评分 (进度条)
+  if (uni.scores) {
+    const scoresEl = document.createElement("div");
+    scoresEl.className = "scores-block";
+    const lang = getLanguage();
+
+    const scoreItems = [
+      { key: "overall", label: lang === "zh" ? "综合" : "Overall", val: uni.scores.overall },
+      { key: "teaching", label: lang === "zh" ? "教学" : "Teaching", val: uni.scores.teaching },
+      { key: "research", label: lang === "zh" ? "科研" : "Research", val: uni.scores.research },
+      { key: "citations", label: lang === "zh" ? "引用" : "Citations", val: uni.scores.citations },
+    ];
+
+    scoreItems.forEach((item) => {
+      const row = document.createElement("div");
+      row.className = "score-row";
+
+      const label = document.createElement("span");
+      label.className = "score-label";
+      label.textContent = item.label;
+
+      const barWrap = document.createElement("div");
+      barWrap.className = "score-bar-wrap";
+      const bar = document.createElement("div");
+      bar.className = "score-bar";
+      bar.style.width = `${Math.min(100, Math.max(0, item.val))}%`;
+      barWrap.append(bar);
+
+      const val = document.createElement("span");
+      val.className = "score-val";
+      val.textContent = String(item.val);
+
+      row.append(label, barWrap, val);
+      scoresEl.append(row);
+    });
+
+    fragment.append(scoresEl);
+  }
+
   // 摘要
   const extractText = (s.extract ?? "").trim();
   const extract = document.createElement("p");

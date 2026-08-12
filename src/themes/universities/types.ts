@@ -24,6 +24,13 @@ export interface University extends MarkerItem {
   wikidataQid?: string;
   /** THE 详情页 URL */
   website?: string;
+  /** THE 分项评分 (0-100) */
+  scores?: {
+    overall: number;
+    teaching: number;
+    research: number;
+    citations: number;
+  };
 }
 
 export type CityType = "capital" | "megacity" | "tech-hub";
