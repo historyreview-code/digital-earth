@@ -21,10 +21,11 @@ FROM nginx:alpine AS runner
 
 COPY --from=builder /app/dist/ /usr/share/nginx/html/
 
-# nginx 配置: SPA 回退 + 静态资源长缓存 + 正确 MIME
-RUN printf '%s\n' \
+# nginx 配置: 用 templates 机制注入 $PORT (Railway 提供端口)
+# nginx:alpine 的 entrypoint 会自动对 /etc/nginx/templates/*.template 做 envsubst
+RUN mkdir -p /etc/nginx/templates && printf '%s\n' \
     'server {' \
-    '    listen 80;' \
+    '    listen ${PORT:-80};' \
     '    server_name _;' \
     '    root /usr/share/nginx/html;' \
     '    index index.html;' \
@@ -47,8 +48,6 @@ RUN printf '%s\n' \
     '    gzip_types text/plain text/css application/json application/javascript image/svg+xml;' \
     '    gzip_min_length 1024;' \
     '}' \
-    > /etc/nginx/conf.d/default.conf
-
-EXPOSE 80
+    > /etc/nginx/templates/default.conf.template
 
 CMD ["nginx", "-g", "daemon off;"]
