@@ -7,6 +7,8 @@
 
 **在线体验**：https://web-production-c7ea8.up.railway.app
 
+> 📦 **v1.0.0** 已发布 · 详见 [CHANGELOG.md](./CHANGELOG.md)
+
 ## ✨ 特性
 
 - 🌐 **3D 可旋转地球**：基于 `three-globe` + `OrbitControls` + `CSS2DRenderer`
