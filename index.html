@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="3D 数字地球可视化底座 + THE 2026 全球百强大学主题参考实现" />
+    <title>Digital Earth · 全球百强大学</title>
+  </head>
+  <body>
+    <header id="topbar">
+      <div class="brand">
+        <h1 id="app-title">数字地球</h1>
+        <p id="app-subtitle">基于 THE 2026 世界大学排名</p>
+      </div>
+
+      <nav id="filter-bar" aria-label="排名筛选"></nav>
+
+      <div id="lang-switch" aria-label="语言切换">
+        <button type="button" data-lang="zh" class="active">中文</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+    </header>
+
+    <main id="stage">
+      <section id="globe" aria-label="3D 地球">
+        <div id="marker-count"><strong id="visible-count">0</strong> / <span id="total-count">0</span></div>
+        <div id="globe-hint">
+          <span class="globe-hint-zh">拖动旋转 · 滚轮缩放 · 双击空地复位</span>
+          <span class="globe-hint-en">Drag to rotate · Scroll to zoom · Double-click empty space to reset</span>
+        </div>
+      </section>
+
+      <aside id="detail-drawer" aria-hidden="true" aria-live="polite">
+        <button id="drawer-close" type="button" aria-label="关闭">×</button>
+        <div id="detail-loading" class="hidden">
+          <div class="spinner"></div>
+          <p>加载中…</p>
+        </div>
+        <div id="detail-content"></div>
+      </aside>
+    </main>
+
+    <footer id="legend">
+      <div class="legend-group" id="legend-main"></div>
+      <span class="credit">数据 · THE 2026 · Wikipedia · NASA</span>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

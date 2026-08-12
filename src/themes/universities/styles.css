@@ -1,0 +1,242 @@
+/* 大学主题 - marker 视觉样式
+   HTML Elements layer - DOM 元素, 始终屏幕像素大小
+   同区域大学通过 .uni-marker--cluster-X  修饰类做扇形错开
+*/
+
+/* ===== 大学 marker ===== */
+.uni-marker {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  pointer-events: auto;
+  z-index: 5;
+  transition: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: translate(-50%, -50%);
+}
+
+/* 地球背面隐藏 (CSS2DRenderer 无深度测试, 用 class 控制) */
+.uni-marker.is-hidden,
+.city-marker.is-hidden {
+  display: none !important;
+}
+
+.uni-marker:hover {
+  transform: translate(-50%, -50%) scale(1.4);
+  z-index: 100;
+}
+
+.uni-marker .uni-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: var(--slate, #94a3b8);
+  box-shadow:
+    0 0 0 2px rgba(2, 6, 23, 0.6),
+    0 0 12px 1px currentColor;
+  transition: box-shadow 220ms;
+}
+
+.uni-rank-top10 .uni-dot {
+  background: #fbbf24;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  box-shadow:
+    0 0 0 2px rgba(2, 6, 23, 0.6),
+    0 0 14px 1px #fbbf24,
+    0 0 28px 2px rgba(251, 191, 36, 0.4);
+}
+
+.uni-rank-top50 .uni-dot {
+  background: #fb923c;
+  box-shadow:
+    0 0 0 2px rgba(2, 6, 23, 0.6),
+    0 0 10px 1px #fb923c;
+}
+
+.uni-rank-top100 .uni-dot {
+  background: #60a5fa;
+  box-shadow:
+    0 0 0 2px rgba(2, 6, 23, 0.6),
+    0 0 8px 1px #60a5fa;
+}
+
+.uni-marker .uni-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  pointer-events: none;
+  animation: uni-pulse 2.4s ease-out infinite;
+}
+
+.uni-rank-top10 .uni-pulse {
+  color: #fbbf24;
+}
+.uni-rank-top50 .uni-pulse {
+  color: #fb923c;
+}
+.uni-rank-top100 .uni-pulse {
+  color: #60a5fa;
+}
+.uni-rank-rest .uni-pulse {
+  color: #94a3b8;
+}
+
+@keyframes uni-pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.uni-marker .uni-label {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 999px;
+  font-size: 11px;
+  color: #f8fafc;
+  white-space: nowrap;
+  opacity: 0;
+  transform-origin: left center;
+  transform: translate(0, -50%) scale(0.9);
+  transition: opacity 180ms, transform 180ms;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.uni-marker:hover .uni-label {
+  opacity: 1;
+  transform: translate(0, -50%) scale(1);
+}
+
+.uni-label-rank {
+  font-weight: 700;
+  color: #60a5fa;
+  font-variant-numeric: tabular-nums;
+}
+
+.uni-label-name {
+  color: #f8fafc;
+}
+
+/* ===== 城市 marker ===== */
+.city-marker {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  pointer-events: auto;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+}
+
+.city-marker:hover {
+  z-index: 50;
+}
+
+.city-marker:hover .city-label {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.city-marker .city-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  border: 1.5px solid var(--city-color);
+  background: transparent;
+  opacity: 0.7;
+  box-shadow:
+    0 0 8px 1px var(--city-color),
+    inset 0 0 4px var(--city-color);
+  transition: transform 220ms, opacity 220ms;
+}
+
+.city-marker:hover .city-ring {
+  transform: scale(1.5);
+  opacity: 1;
+}
+
+.city-marker .city-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  margin: -2px 0 0 -2px;
+  border-radius: 50%;
+  background: var(--city-color);
+  box-shadow: 0 0 6px var(--city-color);
+}
+
+.city-marker .city-label {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translate(-50%, 4px) scale(0.9);
+  padding: 2px 8px;
+  background: rgba(2, 6, 23, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 999px;
+  font-size: 10px;
+  color: var(--city-color);
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+  opacity: 0.6;
+  transition: opacity 180ms, transform 180ms;
+  pointer-events: none;
+}
+
+/* ===== 排名徽章 (drawer 内) ===== */
+.rank-badge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #f8fafc;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(192, 132, 252, 0.15));
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  padding: 6px 14px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  letter-spacing: -1px;
+  box-shadow: 0 0 24px -8px #60a5fa;
+}
+
+.rank-badge::before {
+  content: "RANK";
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+}

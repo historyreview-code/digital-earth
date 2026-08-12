@@ -1,0 +1,306 @@
+/**
+ * 数字地球可视化底座 · 主入口
+ *
+ * 流程:
+ *   1. 读 URL ?theme=<id> → 从 themeRegistry 取主题
+ *   2. 装配: globe (底座) + drawer (底座) + filter (底座) + lang switch
+ *   3. 主题提供 data + marker visual + overlay visual + detail renderer
+ *   4. 点击 marker → 主题 detail loader → drawer 渲染
+ *   5. 语言切换 → globe markers 重建 + drawer 重新渲染
+ */
+
+import "./core/styles.css";
+import "./themes/universities/styles.css";
+
+import { createGlobe } from "./core/globe";
+import { createDrawer, type DrawerController } from "./core/drawer";
+import { createFilterBar, type FilterController } from "./core/filter";
+import { getLanguage, setLanguage, subscribeLanguage, type Language } from "./core/i18n";
+import { themeRegistry, themeExtras, defaultThemeId } from "./themes";
+import {
+  loadUniversityDetail,
+  loadCityDetail,
+} from "./themes/universities/detail";
+import {
+  universitiesClustered,
+  filterUniversitiesByKey,
+} from "./themes/universities/theme";
+import type { Theme } from "./core/types";
+import type { University, MajorCity } from "./themes/universities/types";
+import type { GlobeController, MarkerVisualConfig, OverlayVisualConfig } from "./core/globe";
+
+function getActiveTheme(): Theme<University> {
+  const url = new URL(window.location.href);
+  const themeId = url.searchParams.get("theme") ?? defaultThemeId;
+  const theme = themeRegistry[themeId];
+  if (!theme) {
+    console.warn(`[main] theme '${themeId}' not found, fallback to '${defaultThemeId}'`);
+    return themeRegistry[defaultThemeId] as Theme<University>;
+  }
+  return theme as Theme<University>;
+}
+
+function applyTopbarText(theme: Theme<University>): void {
+  const lang = getLanguage();
+  const titleEl = document.getElementById("app-title");
+  const subtitleEl = document.getElementById("app-subtitle");
+  if (titleEl) titleEl.textContent = theme.name[lang];
+  if (subtitleEl) subtitleEl.textContent = theme.subtitle[lang];
+}
+
+function renderLegend(theme: Theme<University>): void {
+  const lang = getLanguage();
+  const main = document.getElementById("legend-main");
+  if (!main || !theme.legend) return;
+  main.replaceChildren();
+  const group = document.createElement("div");
+  group.style.display = "flex";
+  group.style.gap = "14px";
+  group.style.flexWrap = "wrap";
+  theme.legend.forEach((item) => {
+    const span = document.createElement("span");
+    const sw = document.createElement("i");
+    sw.className = item.swatch;
+    span.append(sw, document.createTextNode(item.label[lang]));
+    group.append(span);
+  });
+  main.append(group);
+}
+
+function bootstrap(): void {
+  // 调试错误 (写到 DOM 上)
+  window.addEventListener("error", (e) => {
+    const div = document.createElement("div");
+    div.style.cssText =
+      "position:fixed;top:60px;left:12px;background:red;color:white;padding:8px;font-size:11px;z-index:9999;max-width:600px;font-family:monospace;";
+    div.textContent = `WIN ERR: ${e.message} @ ${e.filename}:${e.lineno}`;
+    document.body.appendChild(div);
+  });
+  window.addEventListener("unhandledrejection", (e) => {
+    const r = e.reason as { message?: string };
+    const div = document.createElement("div");
+    div.style.cssText =
+      "position:fixed;top:80px;left:12px;background:red;color:white;padding:8px;font-size:11px;z-index:9999;max-width:600px;font-family:monospace;";
+    div.textContent = `REJ: ${r?.message || String(e.reason)}`;
+    document.body.appendChild(div);
+  });
+
+  const theme = getActiveTheme();
+  applyTopbarText(theme);
+  renderLegend(theme);
+
+  // === localStorage 视角持久化 ===
+  // 用户每次访问地球看到的视角一致 (包括 reload 后), 由 localStorage 记住
+  const POV_STORAGE_KEY = "globe_explorer:pov";
+  function loadSavedPOV(): { lat: number; lng: number; altitude: number } | null {
+    try {
+      const raw = localStorage.getItem(POV_STORAGE_KEY);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (
+        typeof parsed.lat === "number" &&
+        typeof parsed.lng === "number" &&
+        typeof parsed.altitude === "number" &&
+        parsed.lat >= -90 &&
+        parsed.lat <= 90 &&
+        parsed.lng >= -180 &&
+        parsed.lng <= 180 &&
+        parsed.altitude > 0
+      ) {
+        return parsed;
+      }
+    } catch {
+      /* ignore */
+    }
+    return null;
+  }
+
+  let saveThrottleTimer: number | null = null;
+  function savePOVThrottled(lat: number, lng: number, altitude: number): void {
+    // 首调立即存 (避免 throttle 把首次保存推到 500ms 后用户关闭页面丢失)
+    if (saveThrottleTimer === null) {
+      try {
+        localStorage.setItem(
+          POV_STORAGE_KEY,
+          JSON.stringify({ lat, lng, altitude }),
+        );
+        console.log("[globe_explorer] POV saved:", lat.toFixed(1), lng.toFixed(1), altitude.toFixed(2));
+      } catch {
+        /* localStorage 不可用时静默 */
+      }
+      saveThrottleTimer = window.setTimeout(() => {
+        saveThrottleTimer = null;
+      }, 500);
+    }
+    // throttle 期间的后续调用直接丢弃 - 拖动结束时 controls.change 还会 fire 一次
+  }
+
+  // === Lang switch ===
+  document.getElementById("lang-switch")?.addEventListener("click", (e) => {
+    const target = (e.target as HTMLElement).closest("[data-lang]");
+    if (!target) return;
+    const lang = (target as HTMLElement).dataset.lang as Language | undefined;
+    if (lang) setLanguage(lang);
+  });
+
+  // === Filter ===
+  const filter: FilterController = createFilterBar();
+  if (theme.filters && theme.filters.length > 0) {
+    filter.render(theme.filters);
+  }
+
+  // === Globe (需要先建, 再绑定 onMarkerClick 因为要用到 drawer + flyTo) ===
+  const container = document.getElementById("globe")!;
+  let lastSelected: University | MajorCity | null = null;
+
+  const drawer: DrawerController = createDrawer();
+  drawer.bindEsc();
+
+  // === URL 深度链接 ===
+  // 支持 ?uni=<rank> 直达某所大学 (刷新/分享可恢复抽屉)
+  // 同时支持 ?view=lat,lng,altitude 自定义初始视角
+  function readDeepLink(): { uniRank?: number; pov?: { lat: number; lng: number; altitude: number } } {
+    const url = new URL(window.location.href);
+    const result: { uniRank?: number; pov?: { lat: number; lng: number; altitude: number } } = {};
+    const uniParam = url.searchParams.get("uni");
+    if (uniParam && /^\d+$/.test(uniParam)) {
+      const rank = Number(uniParam);
+      if (rank >= 1 && rank <= universitiesClustered.length) result.uniRank = rank;
+    }
+    const viewParam = url.searchParams.get("view");
+    if (viewParam) {
+      const parts = viewParam.split(",").map(Number);
+      if (
+        parts.length === 3 &&
+        parts.every(Number.isFinite) &&
+        parts[0] >= -90 && parts[0] <= 90 &&
+        parts[1] >= -180 && parts[1] <= 180 &&
+        parts[2] > 0
+      ) {
+        result.pov = { lat: parts[0], lng: parts[1], altitude: parts[2] };
+      }
+    }
+    return result;
+  }
+
+  // 点击 marker 后更新 URL (支持分享)
+  function updateUrlForSelected(id: string): void {
+    const url = new URL(window.location.href);
+    if (id.startsWith("uni-")) {
+      url.searchParams.set("uni", id.slice(4));
+    } else {
+      url.searchParams.delete("uni");
+    }
+    window.history.replaceState(null, "", url.toString());
+  }
+
+  // 默认初始视角: 北非上空 (lat=20, lng=20)
+  // 这样首次加载能同时看到 北美(偏左) + 欧洲(中央) + 亚洲(偏右)
+  // (100所大学中70%+都在这一面)
+  // 优先级: ?view= 参数 > localStorage > 默认
+  const DEFAULT_POV = { lat: 20, lng: 20, altitude: 2.2 };
+  const deepLink = readDeepLink();
+  const initialPOV = deepLink.pov ?? loadSavedPOV() ?? DEFAULT_POV;
+  console.log("[globe_explorer] initial POV:", initialPOV);
+
+  const globe: GlobeController = createGlobe({
+    container,
+    globeImageUrl: "/assets/earth-topo.jpg",
+    bumpImage: "/assets/earth-topology.png", // 地形凹凸图, 提升地貌立体感
+    backgroundColor: "#020617",
+    initialPointOfView: initialPOV,
+    onMarkerClick: (id: string) => {
+      updateUrlForSelected(id);
+      if (id.startsWith("uni-")) {
+        const rank = Number(id.slice(4));
+        const uni = universitiesClustered.find((u) => u.rank === rank);
+        if (uni) {
+          lastSelected = uni as unknown as University;
+          void loadUniversityDetail(drawer, lastSelected, (lat, lng) =>
+            globe.flyTo(lat, lng),
+          );
+        }
+      } else {
+        const [latS, lngS] = id.split("_");
+        const lat = Number(latS);
+        const lng = Number(lngS);
+        const city = (theme.overlays ?? []).find(
+          (c) =>
+            (c as MajorCity).lat.toFixed(2) === lat.toFixed(2) &&
+            (c as MajorCity).lng.toFixed(2) === lng.toFixed(2),
+        );
+        if (city) {
+          lastSelected = city as unknown as MajorCity;
+          loadCityDetail(drawer, lastSelected);
+          globe.flyTo((city as MajorCity).lat, (city as MajorCity).lng, 0.3);
+        }
+      }
+    },
+  });
+
+  // === 初始 marker ===
+  refreshGlobe(globe, theme, filter.getActive());
+
+  // === 深度链接: 自动打开 ?uni= 指定的大学 ===
+  if (deepLink.uniRank) {
+    const uni = universitiesClustered.find((u) => u.rank === deepLink.uniRank);
+    if (uni) {
+      // 等贴图 + marker 渲染完成再飞行/开抽屉 (避免被 init flyTo 覆盖)
+      setTimeout(() => {
+        lastSelected = uni as unknown as University;
+        void loadUniversityDetail(drawer, lastSelected, (lat, lng) =>
+          globe.flyTo(lat, lng, 0.4),
+        );
+      }, 600);
+    }
+  }
+
+  // === 相机变化持久化 (用户拖动地球后记住位置) ===
+  globe.onCameraChange(({ lat, lng, altitude }) => {
+    savePOVThrottled(lat, lng, altitude);
+  });
+
+  // === Filter 绑定 ===
+  filter.onChange((key) => {
+    refreshGlobe(globe, theme, key);
+  });
+
+  // === 语言切换重渲染 ===
+  subscribeLanguage(() => {
+    applyTopbarText(theme);
+    renderLegend(theme);
+    if (theme.filters) filter.render(theme.filters);
+    refreshGlobe(globe, theme, filter.getActive());
+    if (drawer.isOpen() && lastSelected) {
+      if ("rank" in lastSelected) {
+        void loadUniversityDetail(drawer, lastSelected, (lat, lng) => globe.flyTo(lat, lng));
+      } else {
+        loadCityDetail(drawer, lastSelected);
+      }
+    }
+  });
+
+  console.log(
+    `[globe_explorer] theme=${theme.id}, markers=${universitiesClustered.length}, overlays=${theme.overlays?.length ?? 0}`,
+  );
+}
+
+function refreshGlobe(globe: GlobeController, theme: Theme<University>, filterKey: string): void {
+  const lang = getLanguage();
+  const filtered = filterUniversitiesByKey(universitiesClustered, filterKey);
+  const markerVisual = themeExtras.universities.markerVisual as MarkerVisualConfig<typeof filtered[number]>;
+  globe.setMarkers(filtered, markerVisual, lang);
+  if (theme.overlays && theme.overlays.length > 0) {
+    const overlayVisual = themeExtras.universities.overlayVisual as OverlayVisualConfig<MajorCity>;
+    globe.setOverlays(theme.overlays as unknown as MajorCity[], overlayVisual, lang);
+  }
+}
+
+// 抑制 unused warning
+void (undefined as unknown);
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", bootstrap);
+} else {
+  bootstrap();
+}
