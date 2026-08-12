@@ -22,10 +22,11 @@ FROM nginx:alpine AS runner
 COPY --from=builder /app/dist/ /usr/share/nginx/html/
 
 # nginx 配置: 用 templates 机制注入 $PORT (Railway 提供端口)
-# nginx:alpine 的 entrypoint 会自动对 /etc/nginx/templates/*.template 做 envsubst
+# 注意: 必须显式 envsubst '${PORT}' 只替换端口变量,
+# 否则 nginx 官方 entrypoint 的 envsubst(无参数) 会把 $uri 也替换成空 → 配置语法错误
 RUN mkdir -p /etc/nginx/templates && printf '%s\n' \
     'server {' \
-    '    listen ${PORT:-80};' \
+    '    listen ${PORT};' \
     '    server_name _;' \
     '    root /usr/share/nginx/html;' \
     '    index index.html;' \
@@ -50,4 +51,7 @@ RUN mkdir -p /etc/nginx/templates && printf '%s\n' \
     '}' \
     > /etc/nginx/templates/default.conf.template
 
-CMD ["nginx", "-g", "daemon off;"]
+# 自定义入口: 禁用官方 entrypoint (避免它先跑无参数 envsubst 把 $uri 替换空),
+# 只替换 ${PORT}, 保护 $uri; 再启动 nginx
+ENTRYPOINT []
+CMD ["/bin/sh", "-c", "envsubst '${PORT}' < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"]
