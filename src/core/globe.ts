@@ -146,9 +146,13 @@ export function createGlobe(opts: CreateGlobeOptions): GlobeController {
   // === Orbit Controls ===
   const controls = new OrbitControls(camera, webglRenderer.domElement);
   controls.enableDamping = true;
-  controls.dampingFactor = 0.1;
-  controls.rotateSpeed = 0.5;
-  controls.zoomSpeed = 0.6;
+  controls.dampingFactor = 0.12; // 阻尼: 越大惯性越小, 手指松开后更快停下
+  // 旋转/缩放速度: 降低让拖动更跟手 (用户反馈手机上太快)
+  // 触摸设备 (手机/平板) 进一步降速, 防止手指轻轻一滑地球转飞
+  const isTouchDevice =
+    "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  controls.rotateSpeed = isTouchDevice ? 0.18 : 0.3;
+  controls.zoomSpeed = isTouchDevice ? 0.35 : 0.5;
   controls.minDistance = 101; // 至少在地球外
   controls.enablePan = false;
 
